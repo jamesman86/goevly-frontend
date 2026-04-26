@@ -10,6 +10,7 @@ import GuiasView from '@/views/GuiasView.vue'
 import ComidaView from '@/views/ComidaView.vue'
 import TransporteView from '@/views/TransporteView.vue'
 import BuscarView from '@/views/BuscarView.vue'
+import MisReservasView from '@/views/MisReservasView.vue'
  
 const routes = [
   {
@@ -70,6 +71,12 @@ const routes = [
     path: '/buscar',
     name: 'Buscar',
     component: BuscarView
+  },
+  {
+    path: '/mis-reservas',
+    name: 'MisReservas',
+    component: MisReservasView,
+    meta: { requiresAuth: true }
   },
  
   // Ruta 404 — cualquier ruta no encontrada va al home

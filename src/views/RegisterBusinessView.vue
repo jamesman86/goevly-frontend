@@ -1,8 +1,8 @@
 <template>
   <div>
-    <HeaderSection/>
     <div class="business-container">
       <div class="business-card">
+        <router-link to="/registro" class="back-link">Volver al registro</router-link>
         <h1>Registra tu negocio en goevly</h1>
         <p class="subtitle">Llega a más turistas y ciudadanos de Santa Marta</p>
 
@@ -308,7 +308,9 @@ export default {
 <style scoped>
 .business-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background:
+    linear-gradient(135deg, rgba(0, 119, 204, 0.9), rgba(0, 95, 163, 0.88)),
+    url('@/assets/parque-tayrona.jpg') center/cover;
   padding: 100px 20px 60px;
   display: flex;
   justify-content: center;
@@ -317,11 +319,29 @@ export default {
 
 .business-card {
   background: white;
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 40px;
   max-width: 700px;
   width: 100%;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  box-shadow: 0 18px 45px rgba(0, 60, 110, 0.28);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 22px;
+  color: #0077cc;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.back-link::before {
+  content: "<";
+  margin-right: 8px;
+}
+
+.back-link:hover {
+  color: #005fa3;
 }
 
 .business-card h1 {
@@ -370,8 +390,8 @@ export default {
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #0077cc;
+  box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.12);
 }
 
 .price-row {
@@ -397,8 +417,8 @@ export default {
 }
 
 .image-upload:hover {
-  border-color: #667eea;
-  background: #f8f9ff;
+  border-color: #0077cc;
+  background: #f0f7ff;
 }
 
 .image-upload input {
@@ -449,7 +469,7 @@ export default {
 }
 
 .btn-submit {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0077cc 0%, #005fa3 100%);
   color: white;
   border: none;
   padding: 16px;
@@ -463,7 +483,7 @@ export default {
 
 .btn-submit:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 10px 25px rgba(0, 119, 204, 0.32);
 }
 
 .btn-submit:disabled {

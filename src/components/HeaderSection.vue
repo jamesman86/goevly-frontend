@@ -18,7 +18,7 @@
            👤 {{ userName }} 
         </button>
         <div v-if="userMenuOpen" class="user-dropdown">
-            <router-link to="/dashboard">Mi Dashboard</router-link>
+            <router-link v-if="userRole === 'empresario'" to="/dashboard">Panel de negocio</router-link>
             <router-link to="/mis-reservas">Mis Reservas</router-link>
             <button @click="logout">Cerrar Sesión</button>
         </div>
@@ -40,7 +40,8 @@
         <router-link v-if="!isLoggedIn" to="/login" @click="menuOpen = false">Iniciar Sesión</router-link>
         <router-link v-if="!isLoggedIn" to="/registro" @click="menuOpen = false">Registrarse</router-link>
         <template v-else>
-            <router-link to="/dashboard" @click="menuOpen = false">Mi Dashboard</router-link>
+            <router-link v-if="userRole === 'empresario'" to="/dashboard" @click="menuOpen = false">Panel de negocio</router-link>
+            <router-link to="/mis-reservas" @click="menuOpen = false">Mis Reservas</router-link>
             <button @click="handleLogout" class="mobile-logout">Cerrar Sesión</button>
         </template>
     </div>
@@ -56,7 +57,8 @@ export default {
             userMenuOpen: false,
             // CORREGIDO: nombre unificado a isLoggedIn en todo el componente
             isLoggedIn: false,
-            userName: ''
+            userName: '',
+            userRole: ''
         }
     },
     mounted() {
@@ -80,9 +82,11 @@ export default {
                 const user = JSON.parse(userData)
                 // CORREGIDO: split(' ') para obtener el primer nombre, no split('')
                 this.userName = user.fullName?.split(' ')[0] || 'Usuario'
+                this.userRole = user.role || ''
             } else {
                 this.isLoggedIn = false
                 this.userName = ''
+                this.userRole = ''
             }
         },
         logout(){
@@ -90,6 +94,7 @@ export default {
             localStorage.removeItem('user_data')
             // CORREGIDO: isLoggedIn con d
             this.isLoggedIn = false
+            this.userRole = ''
             this.userMenuOpen = false
             this.$router.push('/')
         },

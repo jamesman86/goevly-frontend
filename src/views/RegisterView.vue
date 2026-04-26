@@ -222,7 +222,7 @@ export default {
     },
     irARegistroNegocio() {
       // Cuando Java esté listo apunta a la URL real
-      window.open('http://localhost:8080/registro-negocio', '_blank')
+      this.$router.push('/registro-negocio')
     },
     socialLogin(provider) {
       this.$refs.toast.show(`Registro con ${provider} — próximamente`, 'info')
