@@ -74,7 +74,7 @@
             </div>
             <div v-if="previewImage" class="image-preview">
               <img :src="previewImage" alt="Vista previa">
-              <button type="button" @click="removeImage" class="remove-image">✕</button>
+              <button type="button" @click="removeImage" class="remove-image" aria-label="Quitar imagen">×</button>
             </div>
           </div>
           <div class="form-group">
@@ -290,7 +290,7 @@ export default {
         
         console.log('Negocio registrado:', newBusiness)
         
-        alert('✅ ¡Negocio registrado con éxito! Tu servicio ya está disponible para los turistas y ciudadanos de Santa Marta.')
+        alert('Negocio registrado con exito. Tu servicio ya esta disponible para los turistas y ciudadanos de Santa Marta.')
         
         this.$router.push('/')
         

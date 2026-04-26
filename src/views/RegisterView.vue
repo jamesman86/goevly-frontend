@@ -10,10 +10,10 @@
         <h2>Explora Santa Marta<br>a un solo clic</h2>
         <p>Únete a miles de personas que descubren las mejores experiencias del Caribe colombiano con Goevly.</p>
         <div class="left-tags">
-          <span>🌊 Tours</span>
-          <span>🍽️ Comida típica</span>
-          <span>🧭 Guías locales</span>
-          <span>🚤 Transporte</span>
+          <span>Tours</span>
+          <span>Comida típica</span>
+          <span>Guías locales</span>
+          <span>Transporte</span>
         </div>
       </div>
     </div>
@@ -35,7 +35,6 @@
           <div class="form-group">
             <label>Nombre completo *</label>
             <div class="input-icon">
-              <span class="icon">👤</span>
               <input
                 type="text"
                 v-model="form.fullName"
@@ -51,7 +50,6 @@
           <div class="form-group">
             <label>Email *</label>
             <div class="input-icon">
-              <span class="icon">📧</span>
               <input
                 type="email"
                 v-model="form.email"
@@ -67,7 +65,6 @@
           <div class="form-group">
             <label>Teléfono <span class="optional">(opcional)</span></label>
             <div class="input-icon">
-              <span class="icon">📱</span>
               <input
                 type="tel"
                 v-model="form.phone"
@@ -80,7 +77,6 @@
           <div class="form-group">
             <label>Contraseña *</label>
             <div class="input-icon">
-              <span class="icon">🔒</span>
               <input
                 :type="showPassword ? 'text' : 'password'"
                 v-model="form.password"
@@ -89,7 +85,7 @@
                 :class="{ 'error': errors.password }"
               >
               <button type="button" class="toggle-password" @click="showPassword = !showPassword">
-                {{ showPassword ? '👁️' : '👁️‍🗨️' }}
+                {{ showPassword ? 'Ocultar' : 'Ver' }}
               </button>
             </div>
             <span v-if="errors.password" class="error-msg">{{ errors.password }}</span>
@@ -99,7 +95,6 @@
           <div class="form-group">
             <label>Confirmar contraseña *</label>
             <div class="input-icon">
-              <span class="icon">🔒</span>
               <input
                 :type="showConfirm ? 'text' : 'password'"
                 v-model="form.confirmPassword"
@@ -108,7 +103,7 @@
                 :class="{ 'error': errors.confirmPassword }"
               >
               <button type="button" class="toggle-password" @click="showConfirm = !showConfirm">
-                {{ showConfirm ? '👁️' : '👁️‍🗨️' }}
+                {{ showConfirm ? 'Ocultar' : 'Ver' }}
               </button>
             </div>
             <span v-if="errors.confirmPassword" class="error-msg">{{ errors.confirmPassword }}</span>
@@ -143,13 +138,12 @@
         <!-- Banner propietarios -->
         <div class="banner-negocio" @click="irARegistroNegocio">
           <div class="banner-izq">
-            <span class="banner-icon">🏪</span>
             <div>
               <p class="banner-title">¿Tienes un negocio en Santa Marta?</p>
               <p class="banner-sub">Regístralo gratis y llega a miles de turistas</p>
             </div>
           </div>
-          <button type="button" class="banner-btn">Registrar mi negocio →</button>
+          <button type="button" class="banner-btn">Registrar mi negocio</button>
         </div>
 
       </div>
@@ -416,15 +410,9 @@ export default {
   align-items: center;
 }
 
-.input-icon .icon {
-  position: absolute;
-  left: 14px;
-  font-size: 16px;
-}
-
 .input-icon input {
   width: 100%;
-  padding: 13px 13px 13px 44px;
+  padding: 13px 76px 13px 14px;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
   font-size: 15px;
@@ -449,7 +437,9 @@ export default {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 18px;
+  color: #0077cc;
+  font-size: 13px;
+  font-weight: 700;
   padding: 0;
 }
 
@@ -685,11 +675,6 @@ export default {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.banner-icon {
-  font-size: 28px;
-  flex-shrink: 0;
 }
 
 .banner-title {

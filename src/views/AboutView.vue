@@ -16,17 +16,14 @@
       <div class="container">
         <div class="mission-grid">
           <div class="mission-card">
-            <div class="mission-icon">🌊</div>
             <h3>Nuestra misión</h3>
             <p>Conectar a los turistas con los mejores negocios locales de Santa Marta, impulsando la economía local y ofreciendo experiencias auténticas del Caribe colombiano.</p>
           </div>
           <div class="mission-card">
-            <div class="mission-icon">🤝</div>
             <h3>Nuestra visión</h3>
             <p>Ser la plataforma de referencia para el turismo local en Colombia, empezando por Santa Marta y expandiéndonos a más ciudades del país.</p>
           </div>
           <div class="mission-card">
-            <div class="mission-icon">💡</div>
             <h3>Nuestros valores</h3>
             <p>Autenticidad, transparencia y apoyo a los emprendedores locales. Creemos que el mejor turismo es el que beneficia directamente a las comunidades.</p>
           </div>

@@ -6,8 +6,8 @@
  
       <!-- Sin servicios -->
       <div v-if="cards.length === 0" class="empty-state">
-        <p>✨ Aún no hay servicios registrados</p>
-        <p class="empty-subtitle">¡Sé el primero en ofrecer tu experiencia!</p>
+        <p>Aún no hay servicios registrados</p>
+        <p class="empty-subtitle">Sé el primero en ofrecer tu experiencia.</p>
         <router-link to="/registro" class="btn-register-business">
           Registrar mi negocio
         </router-link>

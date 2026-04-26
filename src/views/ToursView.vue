@@ -38,7 +38,6 @@
         </div>
 
         <div v-else class="empty-state">
-          <p class="empty-icon">🌊</p>
           <p class="empty-title">No hay tours registrados aún</p>
           <p class="empty-sub">Pronto encontrarás las mejores experiencias del Parque Tayrona y más.</p>
         </div>
@@ -71,12 +70,12 @@ export default {
       filtroActivo: 'todos',
       servicioSeleccionado: null,
       filtros: [
-        { label: '🗺️ Todos', value: 'todos' },
-        { label: '🌿 Naturaleza', value: 'naturaleza' },
-        { label: '🏖️ Playa', value: 'playa' },
-        { label: '🧗 Aventura', value: 'aventura' },
-        { label: '🤿 Snorkel', value: 'snorkel' },
-        { label: '⛵ Náutico', value: 'nautico' }
+        { label: 'Todos', value: 'todos' },
+        { label: 'Naturaleza', value: 'naturaleza' },
+        { label: 'Playa', value: 'playa' },
+        { label: 'Aventura', value: 'aventura' },
+        { label: 'Snorkel', value: 'snorkel' },
+        { label: 'Náutico', value: 'nautico' }
       ],
       cards: []
     }

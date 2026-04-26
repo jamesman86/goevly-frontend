@@ -34,7 +34,6 @@
         </div>
 
         <div v-else class="empty-state">
-          <p class="empty-icon">🚤</p>
           <p class="empty-title">No hay servicios de transporte registrados aún</p>
           <p class="empty-sub">Pronto encontrarás chivas rumberas, lanchas, taxis y más opciones para moverte por Santa Marta.</p>
         </div>
@@ -68,12 +67,12 @@ export default {
       servicioSeleccionado: null,
       filtros: [
         { label: 'Todos', value: 'todos' },
-        { label: '🚤 Lancha', value: 'lancha' },
-        { label: '🚌 Chiva rumbera', value: 'chiva' },
-        { label: '🚕 Taxi', value: 'taxi' },
-        { label: '🛺 Mototaxi', value: 'mototaxi' },
-        { label: '🚐 Van / Buseta', value: 'van' },
-        { label: '🚗 Traslado privado', value: 'traslado' }
+        { label: 'Lancha', value: 'lancha' },
+        { label: 'Chiva rumbera', value: 'chiva' },
+        { label: 'Taxi', value: 'taxi' },
+        { label: 'Mototaxi', value: 'mototaxi' },
+        { label: 'Van / Buseta', value: 'van' },
+        { label: 'Traslado privado', value: 'traslado' }
       ],
       cards: []
     }

@@ -34,7 +34,6 @@
         </div>
 
         <div v-else class="empty-state">
-          <p class="empty-icon">🍽️</p>
           <p class="empty-title">No hay restaurantes registrados aún</p>
           <p class="empty-sub">Pronto encontrarás los mejores sabores del Caribe colombiano aquí.</p>
         </div>
@@ -66,12 +65,12 @@ export default {
       filtroActivo: 'todos',
       servicioSeleccionado: null,
       filtros: [
-        { label: '🍽️ Todos', value: 'todos' },
-        { label: '🦐 Mariscos', value: 'mariscos' },
-        { label: '🍲 Típica', value: 'tipica' },
-        { label: '🥗 Vegetariana', value: 'vegetariana' },
-        { label: '🐟 Pescado', value: 'pescado' },
-        { label: '🍹 Jugos y bebidas', value: 'bebidas' }
+        { label: 'Todos', value: 'todos' },
+        { label: 'Mariscos', value: 'mariscos' },
+        { label: 'Típica', value: 'tipica' },
+        { label: 'Vegetariana', value: 'vegetariana' },
+        { label: 'Pescado', value: 'pescado' },
+        { label: 'Jugos y bebidas', value: 'bebidas' }
       ],
       cards: []
     }
@@ -125,15 +124,18 @@ export default {
 }
 
 .comida-hero {
-  background-image: url('@/assets/foodicon.png');
-  background-color: #ff8c00;
-  background-blend-mode: multiply;
+  background-image: url('@/assets/comidatipica.jpg');
+  background-position: center 45%;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(180, 80, 0, 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(26, 15, 8, 0.72),
+    rgba(26, 15, 8, 0.42)
+  );
 }
 
 .hero-content {

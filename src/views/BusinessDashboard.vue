@@ -20,7 +20,6 @@
             :class="['nav-btn', { active: currentTab === tab.id }]"
             @click="currentTab = tab.id"
           >
-            <span class="icon">{{ tab.icon }}</span>
             {{ tab.name }}
           </button>
         </nav>
@@ -52,7 +51,7 @@
                   >
                 </div>
                 <button class="edit-images-btn" @click="editService(service)">
-                  📸 Editar fotos
+                  Editar fotos
                 </button>
               </div>
 
@@ -110,7 +109,7 @@
                     {{ service.active ? 'Activo' : 'Inactivo' }}
                   </span>
                   <button @click="deleteService(service)" class="delete-btn">
-                    🗑️ Eliminar
+                    Eliminar
                   </button>
                 </div>
               </div>
@@ -264,9 +263,9 @@ export default {
       userEmail: 'empresario@example.com',
       
       tabs: [
-        { id: 'services', name: 'Mis Servicios', icon: '📦' },
-        { id: 'stats', name: 'Estadísticas', icon: '📊' },
-        { id: 'settings', name: 'Configuración', icon: '⚙️' }
+        { id: 'services', name: 'Mis servicios' },
+        { id: 'stats', name: 'Estadísticas' },
+        { id: 'settings', name: 'Configuración' }
       ],
 
       services: [

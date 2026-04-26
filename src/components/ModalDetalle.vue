@@ -2,7 +2,7 @@
   <div class="modal-overlay" @click.self="closeModal">
     <ToastNotification ref="toast" />
     <div class="modal-content">
-      <button class="modal-close" @click="closeModal">✕</button>
+      <button class="modal-close" @click="closeModal" aria-label="Cerrar">×</button>
       
       <div class="modal-image">
         <img :src="service.imagen" :alt="service.title">
@@ -12,8 +12,8 @@
         <h2 class="modal-title">{{ service.title }}</h2>
         
         <div class="modal-rating">
-          <span class="stars">⭐ {{ service.rating }} / 5</span>
-          <span class="reviews">(Sin reseñas aún)</span>
+          <span class="stars">{{ service.rating }} / 5</span>
+          <span class="reviews">Sin reseñas aún</span>
         </div>
         
         <div class="modal-price">
@@ -28,25 +28,25 @@
         
         <div class="modal-details">
           <div class="detail-item">
-            <span class="detail-icon">📍</span>
+            <span class="detail-label">Ubicacion</span>
             <span>{{ service.ubicacion || 'Santa Marta, Colombia' }}</span>
           </div>
           <div class="detail-item">
-            <span class="detail-icon">🕒</span>
+            <span class="detail-label">Horario</span>
             <span>{{ service.horario || 'Horario: 8:00 AM - 5:00 PM' }}</span>
           </div>
           <div class="detail-item">
-            <span class="detail-icon">📞</span>
+            <span class="detail-label">Contacto</span>
             <span>{{ service.telefono || 'Contactar al proveedor' }}</span>
           </div>
         </div>
         
         <div class="modal-actions">
           <button class="btn-favorite" @click="addToFavorites">
-            ❤️ Agregar a favoritos
+            Agregar a favoritos
           </button>
           <button class="btn-reserve" @click="reserveService">
-            📅 Reservar ahora
+            Reservar ahora
           </button>
         </div>
       </div>
@@ -185,13 +185,14 @@ export default {
   width: 100%;
   height: 250px;
   overflow: hidden;
- 
+  background: #f7efe3;
 }
  
 .modal-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  display: block;
 }
  
 .modal-body {
@@ -274,9 +275,14 @@ export default {
   border-bottom: none;
 }
  
-.detail-icon {
-  font-size: 20px;
-  width: 30px;
+.detail-label {
+  width: 82px;
+  color: #52606d;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  flex-shrink: 0;
 }
  
 .modal-actions {

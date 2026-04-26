@@ -69,7 +69,7 @@
  
     <!-- Línea inferior -->
     <div class="footer-bottom">
-      <p>© 2026 goevly — Santa Marta, Colombia. Hecho con ❤️ para los samarios.</p>
+      <p>© 2026 goevly. Santa Marta, Colombia.</p>
     </div>
   </footer>
 </template>

@@ -56,7 +56,6 @@
  
         <!-- Sin resultados -->
         <div v-else-if="query && resultados.length === 0" class="empty-state">
-          <div class="empty-icon">🔍</div>
           <p>No encontramos experiencias con ese nombre</p>
           <p class="empty-sub">Intenta con: Tours, Minca, Tayrona, Playa, Comida...</p>
           <div class="sugerencias">
@@ -73,7 +72,6 @@
  
         <!-- Estado inicial sin búsqueda -->
         <div v-else-if="!query" class="empty-state">
-          <div class="empty-icon">🌊</div>
           <p>Escribe algo para buscar experiencias en Santa Marta</p>
         </div>
  

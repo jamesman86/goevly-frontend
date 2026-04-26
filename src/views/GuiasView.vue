@@ -34,7 +34,6 @@
         </div>
 
         <div v-else class="empty-state">
-          <p class="empty-icon">🧭</p>
           <p class="empty-title">No hay guías registrados aún</p>
           <p class="empty-sub">Pronto encontrarás guías locales expertos en cada rincón de Santa Marta.</p>
         </div>
@@ -66,12 +65,12 @@ export default {
       filtroActivo: 'todos',
       servicioSeleccionado: null,
       filtros: [
-        { label: '🧭 Todos', value: 'todos' },
-        { label: '🌍 Bilingüe', value: 'bilingue' },
-        { label: '🌿 Naturaleza', value: 'naturaleza' },
-        { label: '🏛️ Historia', value: 'historia' },
-        { label: '📸 Fotografía', value: 'fotografia' },
-        { label: '🏔️ Senderismo', value: 'senderismo' }
+        { label: 'Todos', value: 'todos' },
+        { label: 'Bilingüe', value: 'bilingue' },
+        { label: 'Naturaleza', value: 'naturaleza' },
+        { label: 'Historia', value: 'historia' },
+        { label: 'Fotografía', value: 'fotografia' },
+        { label: 'Senderismo', value: 'senderismo' }
       ],
       cards: []
     }

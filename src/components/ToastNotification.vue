@@ -5,9 +5,8 @@
       :key="toast.id"
       :class="['toast', toast.type]"
     >
-      <span class="toast-icon">{{ icons[toast.type] }}</span>
       <span class="toast-message">{{ toast.message }}</span>
-      <button class="toast-close" @click="remove(toast.id)">✕</button>
+      <button class="toast-close" @click="remove(toast.id)" aria-label="Cerrar">×</button>
     </div>
   </transition-group>
 </template>
@@ -18,12 +17,7 @@ export default {
   data() {
     return {
       toasts: [],
-      icons: {
-        success: '✅',
-        error: '❌',
-        warning: '⚠️',
-        info: 'ℹ️'
-      }
+      icons: {}
     }
   },
   methods: {
@@ -69,11 +63,6 @@ export default {
 .toast.error   { border-color: #f44336; color: #c62828; }
 .toast.warning { border-color: #ffaa00; color: #e65100; }
 .toast.info    { border-color: #0077cc; color: #01579b; }
- 
-.toast-icon {
-  font-size: 18px;
-  flex-shrink: 0;
-}
  
 .toast-message {
   flex: 1;

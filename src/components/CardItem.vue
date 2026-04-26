@@ -6,14 +6,14 @@
         :alt="card.title"
         @error="handleImageError"
       >
-      <span v-if="card.rating >= 4.5" class="featured-badge">⭐ Destacado</span>
+      <span v-if="card.rating >= 4.5" class="featured-badge">Destacado</span>
     </div>
     <div class="card-content">
       <h3>{{ card.title }}</h3>
-      <p class="description">{{ card.description || 'Descubre esta increíble experiencia' }}</p>
+      <p class="description">{{ card.description || 'Descubre esta experiencia en Santa Marta' }}</p>
       <div class="card-footer">
         <p class="precio">{{ formatPrice(card.price) }}</p>
-        <p class="rating">⭐ {{ card.rating }} / 5</p>
+        <p class="rating">{{ card.rating }} / 5</p>
       </div>
     </div>
   </div>
