@@ -109,6 +109,28 @@
             <span v-if="errors.confirmPassword" class="error-msg">{{ errors.confirmPassword }}</span>
           </div>
 
+          <!-- Tipo de Usuario -->
+           <div class="form-group">
+            <label>¿Cómo describes tu visita?</label>
+            <div class="tipo-usuario">
+              <div
+                :class="['tipo-card', { active: form.role === 'turista' }]"
+                @click="form.role = 'turista'"
+              >
+                <span class="tipo-emoji">🧳</span>
+                <p class="tipo-title">Soy turista</p>
+                <p class="tipo-sub">Estoy de visita</p>
+              </div>
+              <div
+                :class="['tipo-card', { active: form.role === 'local' }]"
+                @click="form.role = 'local'"
+              >
+                <span class="tipo-emoji">🏖️</span>
+                <p class="tipo-title">Soy de Santa Marta</p>
+                <p class="tipo-sub">Vivo aqui</p>
+              </div>
+            </div>
+          </div>
           <button type="submit" class="btn-register" :disabled="loading">
             {{ loading ? 'Creando cuenta...' : 'Comenzar a explorar' }}
           </button>
@@ -152,7 +174,9 @@
 </template>
 
 <script>
+
 import ToastNotification from '@/components/ToastNotification.vue'
+import api from '@/api/axios.js'
 
 export default {
   name: 'RegisterView',
@@ -168,7 +192,8 @@ export default {
         email: '',
         phone: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        role: 'turista'
       },
       errors: {
         fullName: '',
@@ -223,48 +248,33 @@ export default {
     },
     async handleRegister() {
       if (!this.validateForm()) return
-
       this.loading = true
 
       try {
-        await new Promise(resolve => setTimeout(resolve, 1200))
-
-        const userData = {
-          id: Date.now(),
+        const response = await api.post('/auth/registro', {
           fullName: this.form.fullName,
           email: this.form.email,
           phone: this.form.phone,
-          role: 'turista',
-          registeredAt: new Date().toISOString()
-        }
-
-        const registeredUsers = JSON.parse(localStorage.getItem('registered_users') || '[]')
-        const emailExists = registeredUsers.some(user => user.email === this.form.email)
-
-        if (emailExists) {
-          this.$refs.toast.show('Este email ya está registrado', 'error')
-          return
-        }
-
-        registeredUsers.push({
-          ...userData,
-          password: this.form.password
+          password: this.form.password,
+          role: this.form.role
         })
 
-        localStorage.setItem('registered_users', JSON.stringify(registeredUsers))
-        localStorage.setItem('user_data', JSON.stringify(userData))
-        localStorage.setItem('auth_token', 'fake-token-' + Date.now())
+        const { token, user} = response.data
+
+        // Guardar token y datos reales del backend
+        localStorage.setItem('auth_token', token)
+        localStorage.setItem('user_data', JSON.stringify(user))
 
         this.$refs.toast.show(
-          `¡Bienvenido a Goevly, ${this.form.fullName.split(' ')[0]}!`,
+          `¡Bienvenido a Goevly, ${user.fullName.split(' ')[0]}! 🌊`,
           'success'
         )
 
         setTimeout(() => this.$router.push('/'), 1500)
 
       } catch (error) {
-        console.error(error)
-        this.$refs.toast.show('Error al registrarse. Intenta nuevamente.', 'error')
+        const msg = error.response?.data?.message || 'Error al registrarse'
+        this.$refs.toast.show(msg, 'error')
       } finally {
         this.loading = false
       }
@@ -707,6 +717,54 @@ export default {
 
 .banner-btn:hover {
   background: #fff8f0;
+}
+
+.tipo-usuario{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.tipo-card{
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  background: white;
+}
+
+.tipo-card:hover {
+  border-color: #0077cc;
+}
+
+.tipo-card.active {
+  border-color: #0077cc;
+  background: #f0f7ff;
+}
+
+.tipo-emoji {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.tipo-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 4px;
+}
+
+.tipo-sub {
+  font-size: 11px;
+  color: #888;
+  margin: 0;
+}
+
+.tipo-card.active .tipo-title {
+  color: #0077cc
 }
 
 /* Responsive */

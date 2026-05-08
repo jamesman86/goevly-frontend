@@ -107,7 +107,9 @@
 </template>
 
 <script>
+
 import ToastNotification from '@/components/ToastNotification.vue'
+import api from '@/api/axios.js'
 
 export default {
   name: 'LoginView',
@@ -159,49 +161,35 @@ export default {
       this.loading = true
 
       try {
-        await new Promise(resolve => setTimeout(resolve, 1200))
+        const response = await api.post('/auth/login', {
+          email: this.form.email,
+          password: this.form.password
+        })
 
-        const usuarios = JSON.parse(localStorage.getItem('registered_users') || '[]')
-        const cuenta = usuarios.find(user =>
-          user.email === this.form.email && user.password === this.form.password
-        )
+        const { token, user, message } = response.data
 
-        if (cuenta) {
-          const userData = {
-            email: this.form.email,
-            fullName: cuenta.fullName,
-            role: cuenta.role,
-            ...(cuenta.businessId && { businessId: cuenta.businessId })
-          }
+        localStorage.setItem('auth_token', token)
+        localStorage.setItem('user_data', JSON.stringify(user))
 
-          localStorage.setItem('auth_token', 'fake-jwt-token-' + Date.now())
-          localStorage.setItem('user_data', JSON.stringify(userData))
-
-          if (this.rememberMe) {
-            localStorage.setItem('remember_email', this.form.email)
-          } else {
-            localStorage.removeItem('remember_email')
-          }
-
-          this.$refs.toast.show(
-            `Bienvenido, ${cuenta.fullName.split(' ')[0]}`,
-            'success'
-          )
-
-          setTimeout(() => {
-            if (userData.role === 'empresario') {
-              this.$router.push('/dashboard')
-            } else {
-              this.$router.push('/')
-            }
-          }, 1000)
-
+        if (this.rememberMe) {
+          localStorage.setItem('remember_email', this.form.email)
         } else {
-          this.$refs.toast.show('Email o contraseña incorrectos', 'error')
+          localStorage.removeItem('remember_email')
         }
+
+        this.$refs.toast.show(`${message} 🌊`, 'success')
+
+        setTimeout(() => {
+          if (user.role === 'empresario') {
+            this.$router.push('/dashboard')
+          } else {
+            this.$router.push('/')
+          }
+        }, 1000)
+
       } catch (error) {
-        console.error(error)
-        this.$refs.toast.show('Error al iniciar sesión. Intenta nuevamente.', 'error')
+        const msg = error.response?.data?.message || 'Email o contraseña incorrectos'
+        this.$refs.toast.show(msg, 'error')
       } finally {
         this.loading = false
       }
