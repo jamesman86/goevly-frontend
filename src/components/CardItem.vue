@@ -55,6 +55,9 @@ export default {
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .card:hover {
@@ -93,6 +96,9 @@ export default {
 
 .card-content {
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .card h3 {
@@ -106,6 +112,7 @@ export default {
   font-size: 14px;
   margin-bottom: 12px;
   line-height: 1.4;
+  flex: 1;
 }
 
 .card-footer {
