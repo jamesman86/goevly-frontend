@@ -174,37 +174,36 @@ export default {
  
 @media (max-width: 480px) {
   .categorias-container {
-    flex-direction: column;
+    flex-direction: row;
     width: 95%;
+    flex-wrap: nowrap;
   }
 
   .cat {
-    width: 100%;
-    padding: 14px 16px;
-    flex-direction: row;
-    gap: 16px;
-    justify-content: flex-start;
-    border-right: none !important;
-    border-bottom: 1px solid rgba(255,255,255,0.5);
-  }
-
-  .cat:last-child {
+    flex: 1;
+    padding: 12px 6px;
+    flex-direction: column;
+    border-right: 1px solid rgba(255,255,255,0.5) !important;
     border-bottom: none;
   }
 
+  .cat:last-child {
+    border-right: none !important;
+  }
+
   .cat-icon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 0;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 8px;
   }
 
   .cat-icon img {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
 
   .cat-text {
-    font-size: 15px;
+    font-size: 11px;
     font-weight: 600;
   }
 }
