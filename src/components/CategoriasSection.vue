@@ -173,44 +173,39 @@ export default {
 }
  
 @media (max-width: 480px) {
-  .cat-icon {
-    width: 38px;
-    height: 38px;
-  }
-  
-  .cat-icon img {
-    width: 20px;
-    height: 20px;
-  }
- 
-  .cat {
-    padding: 10px 8px;
-  }
-  
-  
-  .cat-text {
-    font-size: 11px;
-  }
- 
-  .cat{
-    flex: 1 1 50%;
-  }
- 
   .categorias-container {
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 95%;
   }
- 
-  .cat:nth-child(2) {
-    border-right: none;
+
+  .cat {
+    width: 100%;
+    padding: 14px 16px;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: flex-start;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
   }
-  
-  .cat:nth-child(3) {
-    border-top: 1px solid #eef2f6;
+
+  .cat:last-child {
+    border-bottom: none;
   }
-  
-  .cat:nth-child(4) {
-    border-top: 1px solid #eef2f6;
-    border-right: none;
+
+  .cat-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0;
+  }
+
+  .cat-icon img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .cat-text {
+    font-size: 15px;
+    font-weight: 600;
   }
 }
 </style>
