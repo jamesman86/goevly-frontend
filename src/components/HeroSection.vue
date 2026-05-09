@@ -3,7 +3,7 @@
     <!-- CORREGIDO: clase hero-overlay (antes era heo-overlay, le faltaba la r) -->
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1 class="hero-title">Descubre Santa Marta como un local</h1>
+        <h1 class="hero-title">Tu aventura en el Caribe comienza aquí</h1>
         <p class="hero-subtitle">Tours, aventuras y sabores auténticos</p>
  
         <div class="buscador">
