@@ -16,17 +16,6 @@
             >
             <button @click="handleSearch">Buscar</button>
         </div>
- 
-        <!-- Tags populares que estaban definidos pero nunca se mostraban -->
-        <div class="popular-tags">
-            <span 
-                v-for="tag in popularTags" 
-                :key="tag"
-                @click="searchByTag(tag)"
-            >
-                {{ tag }}
-            </span>
-        </div>
     </div>
   </section>
 </template>
@@ -36,8 +25,7 @@ export default {
   name: 'HeroSection',
   data() {
     return {
-      searchQuery: '',
-      popularTags: ['Tours', 'Playas', 'Minca', 'Tayrona', 'Comida Típica']
+      searchQuery: ''
     }
   },
   methods: {

@@ -7,15 +7,21 @@
       </div>
     </router-link>
 
+    <!-- Navegación central — solo desktop -->
+    <nav class="nav-center">
+      <router-link to="/categoria/tours">Tours</router-link>
+      <router-link to="/categoria/guias">Guías</router-link>
+      <router-link to="/categoria/comida">Comida</router-link>
+      <router-link to="/categoria/transporte">Transporte</router-link>
+      <router-link to="/about">Nosotros</router-link>
+    </nav>
+
     <!-- DESKTOP: botones auth o avatar -->
     <div class="desktop-auth">
-      <!-- Sin sesión -->
       <template v-if="!isLoggedIn">
-        <router-link to="/login" class="btn-login">Iniciar sesion</router-link>
-        <router-link to="/registro" class="btn-register">Registrarse</router-link>
+        <router-link to="/login" class="btn-login">Iniciar sesión</router-link>
       </template>
 
-      <!-- Con sesión — avatar con inicial -->
       <template v-else>
         <div class="avatar-menu">
           <div class="avatar" @click="toggleUserMenu">
@@ -31,14 +37,14 @@
             </div>
             <hr class="dropdown-divider">
             <router-link v-if="userRole === 'empresario'" to="/dashboard" @click="userMenuOpen = false">
-              Panel de negocio
+              🏪 Panel de negocio
             </router-link>
             <router-link to="/mis-reservas" @click="userMenuOpen = false">
-              Mis reservas
+              📋 Mis reservas
             </router-link>
             <hr class="dropdown-divider">
             <button @click="logout" class="dropdown-logout">
-              Cerrar sesion
+              🚪 Cerrar sesión
             </button>
           </div>
         </div>
@@ -47,14 +53,12 @@
 
     <!-- MÓVIL: hamburguesa sin sesión / avatar con sesión -->
     <div class="mobile-auth">
-      <!-- Sin sesión — hamburguesa -->
       <button v-if="!isLoggedIn" class="menu-btn" type="button" @click="toggleMenu" aria-label="Abrir menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <!-- Con sesión — avatar -->
       <div v-else class="avatar-menu">
         <div class="avatar" @click="toggleUserMenu">
           {{ inicial }}
@@ -68,33 +72,35 @@
             </div>
           </div>
           <hr class="dropdown-divider">
-          <router-link to="/" @click="userMenuOpen = false">Inicio</router-link>
-          <router-link to="/categoria/tours" @click="userMenuOpen = false">Tours</router-link>
-          <router-link to="/categoria/guias" @click="userMenuOpen = false">Guias</router-link>
-          <router-link to="/categoria/comida" @click="userMenuOpen = false">Comida</router-link>
-          <router-link to="/categoria/transporte" @click="userMenuOpen = false">Transporte</router-link>
+          <router-link to="/" @click="userMenuOpen = false">🏠 Inicio</router-link>
+          <router-link to="/categoria/tours" @click="userMenuOpen = false">🗺️ Tours</router-link>
+          <router-link to="/categoria/guias" @click="userMenuOpen = false">🧭 Guías</router-link>
+          <router-link to="/categoria/comida" @click="userMenuOpen = false">🍽️ Comida</router-link>
+          <router-link to="/categoria/transporte" @click="userMenuOpen = false">🚤 Transporte</router-link>
+          <router-link to="/about" @click="userMenuOpen = false">ℹ️ Nosotros</router-link>
           <hr class="dropdown-divider">
           <router-link v-if="userRole === 'empresario'" to="/dashboard" @click="userMenuOpen = false">
-            Panel de negocio
+            🏪 Panel de negocio
           </router-link>
           <router-link to="/mis-reservas" @click="userMenuOpen = false">
-            Mis reservas
+            📋 Mis reservas
           </router-link>
           <hr class="dropdown-divider">
-          <button @click="logout" class="dropdown-logout">Cerrar sesion</button>
+          <button @click="logout" class="dropdown-logout">🚪 Cerrar sesión</button>
         </div>
       </div>
     </div>
 
     <!-- Menú móvil sin sesión -->
     <div class="mobile-menu" v-if="menuOpen && !isLoggedIn">
-      <router-link to="/" @click="menuOpen = false">Inicio</router-link>
-      <router-link to="/categoria/tours" @click="menuOpen = false">Tours</router-link>
-      <router-link to="/categoria/guias" @click="menuOpen = false">Guias</router-link>
-      <router-link to="/categoria/comida" @click="menuOpen = false">Comida</router-link>
-      <router-link to="/categoria/transporte" @click="menuOpen = false">Transporte</router-link>
+      <router-link to="/" @click="menuOpen = false">🏠 Inicio</router-link>
+      <router-link to="/categoria/tours" @click="menuOpen = false">🗺️ Tours</router-link>
+      <router-link to="/categoria/guias" @click="menuOpen = false">🧭 Guías</router-link>
+      <router-link to="/categoria/comida" @click="menuOpen = false">🍽️ Comida</router-link>
+      <router-link to="/categoria/transporte" @click="menuOpen = false">🚤 Transporte</router-link>
+      <router-link to="/about" @click="menuOpen = false">ℹ️ Nosotros</router-link>
       <hr>
-      <router-link to="/login" @click="menuOpen = false">Iniciar sesion</router-link>
+      <router-link to="/login" @click="menuOpen = false">Iniciar sesión</router-link>
       <router-link to="/registro" @click="menuOpen = false">Registrarse</router-link>
     </div>
 
@@ -116,7 +122,6 @@ export default {
   },
   mounted() {
     this.checkAuth()
-    // Cerrar dropdown al hacer clic fuera
     document.addEventListener('click', this.handleClickOutside)
   },
   beforeUnmount() {
@@ -187,17 +192,39 @@ export default {
 }
 
 .logo-link { text-decoration: none; }
+.logo img { display: block; width: 140px; }
 
-.logo {
+/* Navegación central */
+.nav-center {
   display: flex;
   align-items: center;
+  gap: 32px;
 }
 
-.logo img {
-  display: block;
-  width: 160px;
-  
+.nav-center a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.2s;
+  position: relative;
 }
+
+.nav-center a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #0077cc;
+  transition: width 0.3s;
+}
+
+.nav-center a:hover { color: #0077cc; }
+.nav-center a:hover::after { width: 100%; }
+.nav-center a.router-link-active { color: #0077cc; }
+.nav-center a.router-link-active::after { width: 100%; }
 
 /* Auth desktop */
 .desktop-auth {
@@ -206,12 +233,10 @@ export default {
   gap: 10px;
 }
 
-/* Auth móvil */
 .mobile-auth { display: none; }
 
-/* Botones */
 .btn-login {
-  padding: 8px 20px;
+  padding: 8px 22px;
   border: 2px solid #0077cc;
   background: transparent;
   color: #0077cc;
@@ -223,30 +248,17 @@ export default {
 }
 .btn-login:hover { background: #0077cc; color: white; }
 
-.btn-register {
-  padding: 8px 20px;
-  border: none;
-  background: #0077cc;
-  color: white;
-  border-radius: 25px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 14px;
-  transition: all 0.3s;
-}
-.btn-register:hover { background: #005fa3; transform: translateY(-2px); }
-
 /* Avatar */
 .avatar-menu { position: relative; }
 
 .avatar {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: linear-gradient(135deg, #0077cc, #005fa3);
   color: white;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -256,7 +268,6 @@ export default {
 }
 .avatar:hover { transform: scale(1.08); }
 
-/* Dropdown */
 .user-dropdown {
   position: absolute;
   top: 50px;
@@ -297,19 +308,8 @@ export default {
   flex-shrink: 0;
 }
 
-.dropdown-name {
-  font-weight: 700;
-  font-size: 14px;
-  color: #1a1a2e;
-  margin: 0;
-}
-
-.dropdown-role {
-  font-size: 12px;
-  color: #0077cc;
-  margin: 0;
-  font-weight: 500;
-}
+.dropdown-name { font-weight: 700; font-size: 14px; color: #1a1a2e; margin: 0; }
+.dropdown-role { font-size: 12px; color: #0077cc; margin: 0; font-weight: 500; }
 
 .dropdown-divider {
   border: none;
@@ -358,15 +358,8 @@ export default {
   justify-content: center;
   gap: 5px;
 }
+.menu-btn span { width: 18px; height: 2px; background: #1f2933; border-radius: 999px; }
 
-.menu-btn span {
-  width: 18px;
-  height: 2px;
-  background: #1f2933;
-  border-radius: 999px;
-}
-
-/* Menú móvil sin sesión */
 .mobile-menu {
   position: absolute;
   top: 65px;
@@ -394,23 +387,22 @@ export default {
 .mobile-menu a:hover { background: #f5f5f5; }
 .mobile-menu hr { border: 0.5px solid #eee; margin: 4px 0; }
 
-/* Dropdown móvil más ancho */
-.mobile-dropdown {
-  right: -10px;
-  min-width: 260px;
+.mobile-dropdown { right: -10px; min-width: 260px; }
+
+@media (max-width: 900px) {
+  .nav-center { display: none; }
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
   .header { padding: 10px 20px; }
-  .logo img { width: 125px; }
+  .logo img { width: 120px; }
   .desktop-auth { display: none; }
   .mobile-auth { display: flex; align-items: center; }
 }
 
 @media (max-width: 430px) {
   .header { padding: 10px 16px; }
-  .logo img { width: 115px; }
+  .logo img { width: 110px; }
   .mobile-dropdown { right: -16px; min-width: 240px; }
 }
 </style>
