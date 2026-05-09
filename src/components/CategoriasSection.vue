@@ -38,7 +38,7 @@ export default {
                 },
                 {
                     text: 'Comida', 
-                    icon: require('@/assets/foodicon.png'),
+                    icon: require('@/assets/cutlery.png'),
                     route: '/categoria/comida',
                     id: 'comida'
                 },
